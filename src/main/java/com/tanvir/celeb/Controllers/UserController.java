@@ -4,11 +4,9 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.tanvir.celeb.Repositories.UserRepository;
 import com.tanvir.celeb.Services.ArtistService;
@@ -18,6 +16,7 @@ import com.tanvir.celeb.User.Artist;
 @RestController
 @RequestMapping("/api")
 public class UserController {
+	@Autowired
     private ArtistService artistService;
 	
 	@PostMapping("/blogpost")
@@ -26,8 +25,8 @@ public class UserController {
     }
 	
 	@GetMapping("/view")
-    public List<Artist> getAllUsers() {
-        return null;
+    public ResponseEntity<List<Artist>> findByArtistName(@RequestParam("query") String query) {
+        return ResponseEntity.ok(artistService.findByArtistName(query));
     }
 	
 }

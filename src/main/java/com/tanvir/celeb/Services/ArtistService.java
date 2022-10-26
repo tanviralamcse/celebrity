@@ -4,8 +4,12 @@ import org.springframework.stereotype.Service;
 
 import com.tanvir.celeb.User.Artist;
 
+import java.util.List;
+
 @Service
 public interface ArtistService {
 	Artist save(Artist artist) ;
-	Artist findByName(String artistName);
+
+	 List<Artist> findByArtistName(String query);
+
 }

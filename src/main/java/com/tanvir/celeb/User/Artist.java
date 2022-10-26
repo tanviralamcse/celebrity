@@ -16,7 +16,6 @@ public class Artist{
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@NonNull
 	@Column(name = "id")
 	public Long Id;
 	
@@ -45,6 +44,9 @@ public class Artist{
 	@NonNull
 	@LastModifiedDate
 	public String updatedTime;
-	
-	
+
+
+	public Artist() {
+
+	}
 }
